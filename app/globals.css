@@ -4,6 +4,14 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+@theme {
+  --breakpoint-xm: 300px;
+  --breakpoint-sm: 500px;
+  --breakpoint-md: 700px;
+  --breakpoint-lg: 900px;
+  --breakpoint-xl: 1200px;
+  
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -22,5 +30,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+font-family: 'Roboto', sans-serif;
 }
