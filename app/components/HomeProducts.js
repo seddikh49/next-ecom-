@@ -1,17 +1,13 @@
 "use client"
+import React from 'react'
 import { useShop } from "../context/shopContext";
-import Image from "next/image";
-
-
-export default function Products() {
+import Image from 'next/image';
+const HomeProducts = () => {
     const { products } = useShop();
 
-
-
-   
     return (
-        <>
-            <div className='grid grid-cols-4 mx-auto w-full  gap-10'>
+        <div className='w-full '>
+            <div className='grid grid-cols-4 mx-auto  gap-10 mt-10 w-full'>
                 {products.map((product) => (
                     <div className='m-auto' key={product.id || product.image[0]}>
                         <Image
@@ -25,8 +21,8 @@ export default function Products() {
                     </div>
                 ))}
             </div>
-           
-
-        </>
+        </div>
     )
 }
+
+export default HomeProducts

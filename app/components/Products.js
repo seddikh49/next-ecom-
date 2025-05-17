@@ -6,12 +6,9 @@ import Image from "next/image";
 export default function Products() {
     const { products } = useShop();
 
-
-
-   
     return (
         <>
-            <div className='grid grid-cols-4 mx-auto w-full  gap-10'>
+            <div className='grid grid-cols-4 mx-auto w-full  gap-10 mt-10'>
                 {products.map((product) => (
                     <div className='m-auto' key={product.id || product.image[0]}>
                         <Image
