@@ -23,12 +23,20 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const router = useRouter();
   const [imageIndex, setimageIndex] = useState(0);
   const [fullName, setfullName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [wilaya, setWilaya] = useState('');
-    const [commune, setCommune] = useState('');
-    const [quantity, setQuantity] = useState(0);
-    const [productName, setProductName] = useState();
-     const [deliveryPrice, setdeliveryPrice] = useState(0);
+  const [phone, setPhone] = useState('');
+  const [wilaya, setWilaya] = useState('');
+  const [commune, setCommune] = useState('');
+  const [quantity, setQuantity] = useState(0);
+  const [productName, setProductName] = useState();
+  const [deliveryPrice, setdeliveryPrice] = useState(0);
+  const [communess, setCommuness] = useState([]);
+  const [totalPrice, settotalPrice] = useState(0);
+  const [rotateIcon, setRotateIcon] = useState(true);
+  const [nameConfirmation, setnameConfirmation] = useState();
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+
 
 
   const [allProducts, setallProducts] = useState(products || []);
@@ -73,6 +81,7 @@ export const ShopProvider = ({ children, initialProducts }) => {
 
   const value = {
     products,
+    currency,
     allProducts,
     currency,
     search,
@@ -85,11 +94,28 @@ export const ShopProvider = ({ children, initialProducts }) => {
     imageIndex,
     setimageIndex,
     fullName,
+    setProductName,
+    setfullName,
+    setWilaya,
     wilaya,
+    setWilaya,
     commune,
+    setCommune,
     phone,
+    setPhone,
     quantity,
-    productName
+    setQuantity,
+    productName,
+    communess,
+    setCommuness,
+    deliveryPrice,
+    setdeliveryPrice,
+    totalPrice,
+    settotalPrice,
+    nameConfirmation,
+    setnameConfirmation,
+    apiUrl
+
   }
 
 

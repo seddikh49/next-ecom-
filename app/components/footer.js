@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <div className='mt-20'>
-      <div className='flex xl:flex-row  lg:flex-row md:flex-row sm:flex-col xm:flex-col  items-start justify-evenly mt-10 mb-10 gap-10 '>
+      <div className='flex xl:flex-row  lg:flex-row md:flex-row sm:flex-col xm:flex-col  items-end justify-evenly mt-10 mb-10 gap-10 '>
         
       <div className='flex flex-col gap-5' dir='rtl'>
           <h1 className='text-2xl font-extrabold text-gray-600 font-cairo '>تواصل معنا</h1>

@@ -1,7 +1,7 @@
 import { ShopProvider } from '../app/context/shopContext';
 import { Cairo } from 'next/font/google';
 
-
+import { ToastContainer, toast } from 'react-toastify';
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
       <body
         className={inter.className}
       >
-
+        <ToastContainer/>
         <div className='xl:px-20'>
           <ShopProvider initialProducts={products}  >
             <Header />
