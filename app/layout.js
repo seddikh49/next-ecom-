@@ -35,7 +35,7 @@ export default async function RootLayout({ children }) {
 
   const res =  await axios.get("https://store.kamsed.com/api/product/list");
   const products = res.data.products || [];
-
+ 
 
   return (
     <html lang="ar"  >
@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
       >
 
         <div className='xl:px-20'>
-          <ShopProvider initialProducts={products} >
+          <ShopProvider initialProducts={products}  >
             <Header />
             {children}
           </ShopProvider>

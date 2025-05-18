@@ -4,10 +4,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X } from 'lucide-react';
+import { useShop } from '../context/shopContext';
+
 
 export default function Header() {
+  const {  setSearch, } = useShop()
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   const navItems = [
     { label: 'الرئيسية', href: '/' },
@@ -15,6 +19,8 @@ export default function Header() {
     { label: 'من نحن', href: '/about' },
     { label: 'تواصل معنا', href: '/contact' },
   ];
+
+
 
   return (
     <header className=" shadow-md py-5 px-6 relative">
@@ -40,13 +46,14 @@ export default function Header() {
         </nav>
 
         {/* أيقونة البحث + القائمة للجوال */}
-        <div className="flex items-center gap-2 space-x-4 space-x-reverse">
+        <div className=" xl:w-80 flex items-center gap-2 space-x-4 space-x-reverse">
           {/* مكان الأيقونة محفوظ دائمًا */}
           <div className=" flex justify-end text-gray-600 ">
             {pathname === '/collection' && (
 
               <div className="relative max-w-md xl:w-80  h-10 md:w-44 sm:w-44 xm:w-24 lg:w-64 ">
                 <input
+                  onChange={(e) =>  setSearch(e.target.value)}
                   type="text"
                   placeholder="ابحث..."
                   className="w-full h-full pl-12 pr-4 rounded-2xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
