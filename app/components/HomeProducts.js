@@ -3,12 +3,15 @@ import React from 'react'
 import { useShop } from "../context/shopContext";
 import Image from 'next/image';
 import Link from 'next/link';
+import TextContent from '../components/TextContent';
+
 
 const HomeProducts = () => {
     const { products } = useShop();
 
     return (
-        <div className='w-full '>
+        <div className='w-full mt-10 '>
+           <TextContent text={"أحدث المنتجات"}/>
             <div className='grid grid-cols-5 mx-auto  gap-10 mt-10 w-full'>
                
         {products.slice(0,5).map((product, index) => (

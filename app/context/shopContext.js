@@ -18,21 +18,42 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const delivery_fee = 10
 
   const [products, setProducts] = useState(initialProducts || []);
-
+  const [sortValue, setSortValue] = useState('');
   const [search, setSearch] = useState();
   const router = useRouter();
 
- 
- 
+
+  const [allProducts, setallProducts] = useState(products || []);
+
+  const applyFilter = () => {
+    setallProducts(products)
+    const copyProducts = [...products]
+
+    if (search) {
+      const filtered = copyProducts.filter((pro) => {
+        return pro.name.toLowerCase().includes(search.toLowerCase())
+      })
+      setallProducts(filtered)
+    }
+  }
+
+
+
+  useEffect(() => {
+    applyFilter()
+  }, [search]);
+
+
+
 
   const value = {
     products,
+    allProducts,
     currency,
     search,
     setSearch,
     // backend_url,
     router,
-
     wilayas,
     communes,
   }

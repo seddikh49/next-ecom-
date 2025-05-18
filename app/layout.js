@@ -7,6 +7,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from './components/Header';
 import axios from 'axios';
+import Footer from './components/Footer';
+
 
 
 const inter = Cairo({
@@ -48,6 +50,9 @@ export default async function RootLayout({ children }) {
           <ShopProvider initialProducts={products}  >
             <Header />
             {children}
+           
+             <Footer/>
+            
           </ShopProvider>
         </div>
       </body>

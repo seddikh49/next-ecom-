@@ -7,32 +7,13 @@ import Link from "next/link";
 
 
 
-export default function Products({props}) {
-    const {search,products } = useShop();
-  const [allProducts, setallProducts] = useState(products || []);
+export default function Products({ props }) {
+  const { allProducts } = useShop();
   
-  const applyFilter = () => {
-        setallProducts(products)
-        const copyProducts = [...products]
-        
-        if(search){
-          const filtered = copyProducts.filter((pro)=> {
-            return pro.name.toLowerCase().includes(search.toLowerCase())
-          })
-          setallProducts(filtered)
-        }
-  }
-
-
-  
-  useEffect(() => {
-      applyFilter()
-  }, [search]);
-
 
   return (
     <>
-      <div className='grid grid-cols-5  w-full gap-5  mt-10'>
+      <div className='grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xm:grid-cols-1  w-full gap-5  mt-10'>
 
         {allProducts?.map((product, index) => (
           <div
@@ -51,7 +32,7 @@ export default function Products({props}) {
             </div>
 
             <div className="mt-4 text-center">
-              <h1 className="text-lg font-semibold text-gray-800">{product.name}</h1>
+              <h1 className="text-lg font-semibold text-gray-800">{product.name.slice(0, 30)}</h1>
               <p className="text-xl text-indigo-600 font-bold mt-2">{product.price} ريال</p>
 
               <Link href={"/product/${product.id"} className="block">
