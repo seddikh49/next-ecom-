@@ -21,6 +21,14 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const [sortValue, setSortValue] = useState('');
   const [search, setSearch] = useState();
   const router = useRouter();
+  const [imageIndex, setimageIndex] = useState(0);
+  const [fullName, setfullName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [wilaya, setWilaya] = useState('');
+    const [commune, setCommune] = useState('');
+    const [quantity, setQuantity] = useState(0);
+    const [productName, setProductName] = useState();
+     const [deliveryPrice, setdeliveryPrice] = useState(0);
 
 
   const [allProducts, setallProducts] = useState(products || []);
@@ -37,12 +45,29 @@ export const ShopProvider = ({ children, initialProducts }) => {
     }
   }
 
+  const sortProducts = () => {
+
+    const productsCopy = [...allProducts];
+    if (sortValue === "high") {
+      const sorted = productsCopy.sort((a, b) => b.price - a.price);
+      setallProducts(sorted);
+    }
+
+    if (sortValue === "low") {
+      const sorted = productsCopy.sort((a, b) => a.price - b.price);
+      setallProducts(sorted);
+    }
+  };
 
 
   useEffect(() => {
     applyFilter()
   }, [search]);
 
+
+  useEffect(() => {
+    sortProducts()
+  }, [sortValue]);
 
 
 
@@ -56,6 +81,15 @@ export const ShopProvider = ({ children, initialProducts }) => {
     router,
     wilayas,
     communes,
+    setSortValue,
+    imageIndex,
+    setimageIndex,
+    fullName,
+    wilaya,
+    commune,
+    phone,
+    quantity,
+    productName
   }
 
 

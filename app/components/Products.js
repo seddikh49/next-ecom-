@@ -1,5 +1,4 @@
 "use client"
-import { useState, useEffect } from "react";
 import { useShop } from "../context/shopContext";
 import Image from "next/image";
 
@@ -7,8 +6,9 @@ import Link from "next/link";
 
 
 
-export default function Products({ props }) {
+export default function Products() {
   const { allProducts } = useShop();
+
   
 
   return (
@@ -35,7 +35,7 @@ export default function Products({ props }) {
               <h1 className="text-lg font-semibold text-gray-800">{product.name.slice(0, 30)}</h1>
               <p className="text-xl text-indigo-600 font-bold mt-2">{product.price} ريال</p>
 
-              <Link href={"/product/${product.id"} className="block">
+              <Link href={`collection/${product._id}`} className="block">
                 <button className="mt-4 w-full bg-indigo-600 text-white py-2 px-4 rounded-xl hover:bg-indigo-700 transition duration-300">
                   شراء المنتج
                 </button>
