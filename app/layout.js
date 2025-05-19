@@ -46,9 +46,9 @@ export default async function RootLayout({ children }) {
         className={inter.className}
       >
         <ToastContainer/>
-        <div className='xl:px-20'>
+        <div className='xl:px-20 lg:px-10 relative sm:px-0'>
           <ShopProvider initialProducts={products}  >
-            <Header />
+            <Header  />
             {children}
            
              <Footer/>

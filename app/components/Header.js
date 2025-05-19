@@ -1,16 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X } from 'lucide-react';
 import { useShop } from '../context/shopContext';
 
 
 export default function Header() {
-  const {  setSearch, } = useShop()
+  const { setSearch, } = useShop()
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
 
 
   const navItems = [
@@ -21,9 +23,25 @@ export default function Header() {
   ];
 
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY);
+      console.log(isSticky)
+      if (window.scrollY > 0) {
+        setIsSticky(true)
+      } else {
+        setIsSticky(false)
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isSticky]);
+
+  // fixed w-[90%] z-10 backdrop-blur-md top-0 left-0 
 
   return (
-    <header className=" shadow-md py-5 px-6 relative">
+    <header className={` shadow-md py-5 px-5   backdrop-blur-xl transition-all duration-500 ease-in-out  ${isSticky ? "fixed z-50 top-0 w-full lg:px-15 xl:px-25 left-0 " : ''} `}>
       <div className="w-full mx-auto flex items-center justify-between">
 
         {/* الشعار */}
@@ -53,7 +71,7 @@ export default function Header() {
 
               <div className="relative max-w-md xl:w-80  h-10 md:w-44 sm:w-44 xm:w-24 lg:w-64 ">
                 <input
-                  onChange={(e) =>  setSearch(e.target.value)}
+                  onChange={(e) => setSearch(e.target.value)}
                   type="text"
                   placeholder="ابحث..."
                   className="w-full h-full pl-12 pr-4 rounded-2xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"

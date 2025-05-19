@@ -8,6 +8,8 @@ import { communes } from '../../public/‏‏assets/frontend_assets/communes'
 import { wilayas } from '../../public/‏‏assets/frontend_assets/wilayas'
 import { ClipLoader } from "react-spinners";
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+
 
 
 
@@ -16,6 +18,7 @@ import Link from 'next/link';
 import axios from 'axios';
 
 const ProductDetails = ({ product }) => {
+      const router = useRouter()
     const [loading, setLoading] = useState(false);
     const [status, setstatus] = useState('جديد');
     const [notification, setnotification] = useState(1);
@@ -65,6 +68,7 @@ const ProductDetails = ({ product }) => {
             if (response.data.success) {
                 toast.success('تم طلب المنتج')
                 setLoading(false)
+                router.push('/confirm   ')
             }
             if(!response.data.success){
                 toast.error(response.data.msg)
@@ -135,7 +139,7 @@ const ProductDetails = ({ product }) => {
     return (
         <div>
             <div className='w-full max-h-max gap-10  flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xm:flex-col mt-10 '>
-                <div className='xl:w-1/2   lg:w-1/2 md:w-full  h-max flex flex-col md:items-center  lg:items-end xl:items-end sm:items-center sm:justify-start   '>
+                <div className='xl:w-1/2   lg:w-1/2 md:w-full  h-max flex flex-col md:items-center  lg:items-end xl:items-end sm:items-center xm:items-center  sm:justify-start   '>
                     <div className='flex flex-col items-end gap-2 pb-3 sm:ml-auto' >
                         <p className='text-2xl font-bold'>{product.name}</p>
                         <div className='flex text-2xl font-bold'>
@@ -144,7 +148,7 @@ const ProductDetails = ({ product }) => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className='flex z-1  flex-col xl:w-[550px] md:w-full  p-7 shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.8)] lg:w-[450px] sm:w-full  gap-5 xl:items-end sm:items-center' action="">
+                    <form onSubmit={handleSubmit} className='flex z-1  flex-col xl:w-[550px] md:w-[90%]  p-7 shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.8)] lg:w-[420px] xm:w-[90%] sm:w-[90%]  gap-5 xl:items-end sm:items-center' action="">
                         <div dir='rtl' className='xl:w-full md:w-full lg:w-full  sm:w-full flex gap-5 xl:flex-row md:flex-row lg:flex-row  sm:flex-col xm:flex-col '>
                             <div className='xl:w-1/2 relative sm:w-full xm:w-full'>
                                 <input onChange={(e) => setfullName(e.target.value)} value={fullName} className='w-1/2 bg-gray-100 py-3 font-bold px-10 border-1 sm:w-full xm:w-full focus:outline-blue-500 border-gray-600/50 rounded-[5px]' placeholder='الاسم الكامل' type="text" />
@@ -245,9 +249,9 @@ const ProductDetails = ({ product }) => {
 
 
 
-                <div className='xl:w-1/2 lg:w-1/2 md:w-full flex flex-col gap-2 justify-center md:items-center xl:items-start '>
-                    <img src={product.image[imageIndex]} alt="" className='xl:w-[500px] lg:w-[400px] md:w-4/5' />
-                    <div className='grid grid-cols-4 xl:w-[500px] lg:w-[400px] md:w-4/5 gap-2 '>
+                <div className='xl:w-1/2 lg:w-1/2 md:w-full flex flex-col gap-2 justify-center md:items-center sm:items-center xm:items-center xl:items-start '>
+                    <img src={product.image[imageIndex]} alt="" className='xl:w-[500px] lg:w-[400px] md:w-4/5 sm:w-[90%] xm:w-[90%]' />
+                    <div className='grid grid-cols-4 xl:w-[500px] lg:w-[400px] md:w-4/5 gap-2 sm:w-[90%] xm:w-[90%]'>
                         {product.image.map((img, index) => {
                             return (
                                 <img key={index} onClick={() => setimageIndex(index)} className='cursor-pointer' src={img} alt="" />

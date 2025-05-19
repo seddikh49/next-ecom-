@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
 
-    <div className='w-full flex justify-center items-center flex-col ' >
+    <div className='w-full flex justify-center items-center flex-col transition-all duration-1000 ease-in-out ' >
       <Hero />
     
      <HomeProducts/>
