@@ -26,7 +26,6 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY);
-      console.log(isSticky)
       if (window.scrollY > 0) {
         setIsSticky(true)
       } else {
@@ -36,12 +35,12 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isSticky]);
+  }, []);
 
   // fixed w-[90%] z-10 backdrop-blur-md top-0 left-0 
 
   return (
-    <header className={` shadow-md py-5 px-5   backdrop-blur-xl transition-all duration-500 ease-in-out  ${isSticky ? "fixed z-50 top-0 w-full lg:px-15 xl:px-25 left-0 " : ''} `}>
+    <header className={` shadow-md py-5 px-5   backdrop-blur-3xl transition-all duration-500 ease-in-out  ${isSticky ? "fixed z-50 top-0 w-full lg:px-15 xl:px-25 left-0 " : ''} `}>
       <div className="w-full mx-auto flex items-center justify-between">
 
         {/* الشعار */}

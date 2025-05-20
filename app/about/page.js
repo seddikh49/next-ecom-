@@ -36,9 +36,9 @@ const About = () => {
         <TextContent text1={'لماذا نحن'} />
       </div>
 
-      <div dir='rtl' className='mt-10 flex xl:flex-row xm:flex-col gap-6'>
-        <div className='flex xm:flex-col sm:flex-col xl:flex-row lg:flex-row justify-between items-start gap-6'>
-          <div className='py-5 px-10 border border-gray-300 rounded-xl shadow-lg flex gap-4 flex-col bg-white'>
+      <div dir='rtl' className='mt-10 flex xl:flex-row xm:flex-col gap-6  px-5'>
+        <div className='flex xm:flex-col sm:flex-col xl:flex-row lg:flex-row justify-between items-start gap-6 '>
+          <div className='py-5 px-10 border border-gray-300 rounded-xl shadow-lg flex gap-4 flex-col bg-white '>
             <h1 className='text-xl font-bold font-cairo text-gray-800'> ضمان الجودة :</h1>
             <p className='text-gray-600 text-md leading-relaxed '>نحن في <span className='text-amber-500 font-bold'>كامسد</span> نولي أهمية كبيرة لضمان الجودة في كل منتج نقدمه. نقوم بفحص المنتجات بعناية قبل شحنها للتأكد من مطابقتها للمعايير المطلوبة وتوقعات العملاء. هدفنا هو أن تصل إليك مشترياتك بحالة ممتازة، لأن رضاك وجودة تجربتك هما أولويتنا.</p>
           </div>

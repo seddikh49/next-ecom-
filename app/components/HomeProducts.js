@@ -12,7 +12,7 @@ const HomeProducts = () => {
     return (
         <div className='w-full mt-10 '>
            <TextContent text={"أحدث المنتجات"}/>
-            <div className='grid grid-cols-5 mx-auto  gap-10 mt-10 w-full'>
+            <div className='grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 xm:grid-cols-1 sm:grid-cols-1 mx-auto  gap-10 mt-10 w-full'>
                
         {products.slice(0,5).map((product, index) => (
           <div

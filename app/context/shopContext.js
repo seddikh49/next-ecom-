@@ -18,6 +18,7 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const delivery_fee = 10
 
   const [products, setProducts] = useState(initialProducts || []);
+
   const [sortValue, setSortValue] = useState('');
   const [search, setSearch] = useState();
   const router = useRouter();
@@ -33,38 +34,45 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const [totalPrice, settotalPrice] = useState(0);
   const [rotateIcon, setRotateIcon] = useState(true);
   const [nameConfirmation, setnameConfirmation] = useState();
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
+ 
 
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const [allProducts, setallProducts] = useState(products || []);
+
+
+
+  const [allProducts, setAllProducts] = useState(initialProducts || []);
 
   const applyFilter = () => {
-    setallProducts(products)
+    setAllProducts(products)
     const copyProducts = [...products]
 
     if (search) {
       const filtered = copyProducts.filter((pro) => {
         return pro.name.toLowerCase().includes(search.toLowerCase())
       })
-      setallProducts(filtered)
+      setAllProducts(filtered)
     }
   }
 
-  const sortProducts = () => {
+  const filterCategoryProducts = () =>{
+       console.log("filter")
+  }
 
-    const productsCopy = [...allProducts];
+
+  const sortProducts = () => {
+     setAllProducts(products)
+    const productsCopy = [...products];
     if (sortValue === "high") {
       const sorted = productsCopy.sort((a, b) => b.price - a.price);
-      setallProducts(sorted);
+      setAllProducts(sorted);
     }
 
     if (sortValue === "low") {
       const sorted = productsCopy.sort((a, b) => a.price - b.price);
-      setallProducts(sorted);
-    }
+      setAllProducts(sorted);
+    } 
   };
 
 
@@ -114,7 +122,9 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     settotalPrice,
     nameConfirmation,
     setnameConfirmation,
-    apiUrl
+    apiUrl,
+    rotateIcon,
+     setRotateIcon
 
   }
 
