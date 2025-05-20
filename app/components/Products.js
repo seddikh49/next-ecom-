@@ -13,12 +13,12 @@ export default function Products() {
 
   return (
     <>
-      <div className='grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 xm:grid-cols-1  w-full gap-10  mt-10'>
+      <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 xm:grid-cols-1  w-full gap-10  mt-10'>
 
         {allProducts?.map((product, index) => (
           <div
             key={index}
-            className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-4  mx-auto"
+            className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-4 w-full  mx-auto"
           >
             <div className="overflow-hidden rounded-xl">
               <Image
@@ -32,7 +32,7 @@ export default function Products() {
             </div>
 
             <div className="mt-4 text-center">
-              <h1 className="text-md font-semibold text-gray-800 whitespace-nowrap">{product.name.slice(0, 25)}</h1>
+              <h1 className="text-md font-semibold text-gray-800 whitespace-nowrap">{product.name.slice(0, 20)}</h1>
               <p className="text-xl text-indigo-600 font-bold mt-2">{product.price} ريال</p>
 
               <Link href={`collection/${product._id}`} className="block">

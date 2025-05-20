@@ -5,7 +5,7 @@ import { useShop } from "../context/shopContext";
 import React, { useContext, useState, useEffect } from 'react'
 
 const HandleCategories = () => {
-    const { rotateIcon, setRotateIcon, search, products } = useShop()
+    const { rotateIcon, setRotateIcon, search, products, filterCategoryProducts } = useShop()
     const [icon, setIcon] = useState(true)
     const [showCategories, setshowCategories] = useState("hidden")
     const [category, setCategory] = useState([])
@@ -16,23 +16,18 @@ const HandleCategories = () => {
 
 
     const filterCategory = (e) => {
-        if(checkedCategory === e.target.value){
-            console.log("repeat cat")
+        if (checkedCategory === e.target.value) {
             setcheckedCategory('')
-         }
-        else{
+        }
+        else {
             setcheckedCategory(e.target.value)
         }
     }
 
 
-    // useEffect(() => {
-        
-    //         if(!checkedCategory){
-    //             setcheckedCategory('')
-    //         }
-        
-    // }, [checkedCategory]);
+    useEffect(() => {
+        filterCategoryProducts(checkedCategory)
+    }, [checkedCategory]);
 
 
 
@@ -49,7 +44,7 @@ const HandleCategories = () => {
 
 
     return (
-        <div className='sm:w-full h-max  mt-5 md:w-full w-full lg:w-52 flex flex-col gap-y-4 rounded-xl border border-gray-200 shadow-sm bg-white p-4' dir='rtl'>
+        <div className='sm:w-full h-max  mt-5 md:w-full w-full lg:w-52 flex flex-col gap-y-4 rounded-xl border border-gray-200 shadow-sm  p-4' dir='rtl' >
             <h1
                 onClick={showCategoriesHandle}
                 className='font-cairo font-bold text-gray-700 text-xl flex items-center justify-between cursor-pointer'
@@ -69,31 +64,31 @@ const HandleCategories = () => {
                     <div className='flex items-center gap-2'>
                         <input
                             className='accent-blue-600 w-4 h-4'
-                            onChange={(e)=> filterCategory(e)}
+                            onChange={(e) => filterCategory(e)}
                             type="checkbox"
                             value={'Men'}
-                            checked={checkedCategory === "Men" }
+                            checked={checkedCategory === "Men"}
                         />
                         <label className='font-poppins text-gray-600 text-sm'>Men</label>
                     </div>
                     <div className='flex items-center gap-2'>
                         <input
                             className='accent-blue-600 w-4 h-4'
-                            onChange={(e)=> filterCategory(e)}
+                            onChange={(e) => filterCategory(e)}
                             type="checkbox"
                             value={'Women'}
-                            checked={checkedCategory === "Women" }
+                            checked={checkedCategory === "Women"}
                         />
                         <label className='font-poppins text-gray-600 text-sm'>Women</label>
                     </div>
                     <div className='flex items-center gap-2'>
                         <input
                             className='accent-blue-600 w-4 h-4'
-                            onChange={(e)=> filterCategory(e)}
+                            onChange={(e) => filterCategory(e)}
                             type="checkbox"
                             value={'Kids'}
-                            checked={checkedCategory === "Kids" }
-                           
+                            checked={checkedCategory === "Kids"}
+
                         />
                         <label className='font-poppins text-gray-600 text-sm'>Kids</label>
                     </div>

@@ -34,7 +34,7 @@ export const ShopProvider = ({ children, initialProducts }) => {
   const [totalPrice, settotalPrice] = useState(0);
   const [rotateIcon, setRotateIcon] = useState(true);
   const [nameConfirmation, setnameConfirmation] = useState();
- 
+
 
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -56,13 +56,21 @@ export const ShopProvider = ({ children, initialProducts }) => {
     }
   }
 
-  const filterCategoryProducts = () =>{
-       console.log("filter")
+
+
+  const filterCategoryProducts = (checkedCategory) => {
+    if (checkedCategory) {
+      const copyFilter = [...products]
+      const filtredCategory = copyFilter.filter((pro) => {
+        return pro.category === checkedCategory
+      })
+      setAllProducts(filtredCategory)
+    }
   }
 
 
   const sortProducts = () => {
-     setAllProducts(products)
+    setAllProducts(products)
     const productsCopy = [...products];
     if (sortValue === "high") {
       const sorted = productsCopy.sort((a, b) => b.price - a.price);
@@ -72,7 +80,7 @@ export const ShopProvider = ({ children, initialProducts }) => {
     if (sortValue === "low") {
       const sorted = productsCopy.sort((a, b) => a.price - b.price);
       setAllProducts(sorted);
-    } 
+    }
   };
 
 
@@ -124,7 +132,9 @@ export const ShopProvider = ({ children, initialProducts }) => {
     setnameConfirmation,
     apiUrl,
     rotateIcon,
-     setRotateIcon
+    setRotateIcon,
+    filterCategoryProducts
+
 
   }
 

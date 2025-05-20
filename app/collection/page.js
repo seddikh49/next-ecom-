@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function Collection() {
-        
+
 
 
 
@@ -22,10 +22,12 @@ export default async function Collection() {
 
     return (
         <>
-            <div className="mt-10 flex xl:flex-row sm:flex-col gap-10">
-
-                <div>
-                    <div className="flex xm:items-end  justify-between items-center px-10 sm:flex-col xm:flex-col xl:flex-row lg:flex-row md:flex-row gap-4">
+            <div className="mt-10 flex xl:flex-row lg:flex-row sm:flex-col  xm:flex-col-reverse gap-5" dir="rtl">
+                <div className="xl:w-64 lg:w-48 sm:w-full xm:w-full px-3  flex" dir="rtl">
+                    <HandleCategories />
+                </div>
+                <div dir="rtl" className="">
+                    <div className="flex xm:items-start  justify-between items-center px-10 sm:flex-col-reverse xm:flex-col-reverse xl:flex-row lg:flex-row md:flex-row gap-4" dir="rtl">
                         <div className="w-60">
                             <SortSelect />
                         </div>
@@ -35,9 +37,7 @@ export default async function Collection() {
                         <Products />
                     </div>
                 </div>
-                <div className=" max-w-96 w-72  flex" dir="rtl">
-                <HandleCategories/>
-                </div>
+
             </div>
 
 

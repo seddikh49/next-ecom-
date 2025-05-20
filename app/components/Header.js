@@ -44,7 +44,7 @@ export default function Header() {
       <div className="w-full mx-auto flex items-center justify-between">
 
         {/* الشعار */}
-        <div className="text-4xl font-extrabold tracking-widest">
+        <div className="xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl  xm:text-2xl font-extrabold tracking-widest">
           KAMSED<span className='text-orange-500'>.</span>
         </div>
 
