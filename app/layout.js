@@ -7,7 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from './components/Header';
 import axios from 'axios';
-import Footer from './components/Footer';
+import Footer from './components/footer';
 
 
 
@@ -35,7 +35,8 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  const res =  await axios.get("https://store.kamsed.com/api/product/list");
+  // const res =  await axios.get("https://store.kamsed.com/api/product/list");
+   const res =  await axios.get("http://localhost:3000/api/product/list");
   const products = res.data.products || [];
  
 

@@ -29,8 +29,8 @@ const Footer = () => {
         </div>
 
 
-        <div className='max-w-1/3  sm:w-full  flex flex-col sm:flex-col gap-4 justify-start ' dir='rtl'>
-          <h1 className="text-4xl   font-extrabold  text-gray-600 font-cairo ">
+        <div className='  sm:w-full xm:w-full  flex flex-col sm:flex-col gap-4 justify-start ' dir='rtl'>
+          <h1 className="text-4xl   font-extrabold  text-gray-600 font-cairo  ">
             كامسد<span className="text-orange-400 aspect-square font-cairo">.</span>
           </h1>
           <p className='text-lg  font-abold text-gray-600 font-cairo'>شركة متخصصة في بيع المنتجات عالية الجودة، تهدف إلى تلبية احتياجات العملاء من خلال توفير تشكيلة واسعة من السلع بأسعار تنافسية وخدمة موثوقة.

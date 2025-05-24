@@ -51,29 +51,30 @@ const Confirm = () => {
 
 
     return (
-        <div className=''>
+        <div className='' dir='rtl'>
             {fullName !== '' ? (
                 <div>
                     <div className='flex justify-evenly xm:space-y-5 items-center md:flex-col sm:flex-col xm:flex-col xl:flex-row lg:flex-row'>
-                        <div>
-                            <Lottie animationData={animationData} loop={true} className='xl:w-[500px] lg:w-100 xm:w-full sm:w-full md:w-[500px]' />
-                        </div>
-                        <div className='lg:w-[450px] xl:w-[600px] md:w-full sm:w-full xm:w-full  text-end'>
+                       
+                        <div className='lg:w-[450px] xl:w-[600px] md:w-full sm:w-full xm:w-full px-4 mt-10'>
                             <div className='absolute right-0 top-20'>
                                 <Lottie animationData={animationData2} loop={true} className='w-100' />
                             </div>
-                            <div className='flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse  xm:flex-col-reverse justify-end gap-3'>
-                                <h1 className='font-bold text-4xl text-white'><span className='bg-orange-400 '>{nameConfirmation} </span></h1>
-                                <h1 className='font-bold text-4xl pb-4'> شكر جزيلا لك </h1>
+                            <div className='flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse  xm:flex-col-reverse  gap-3'>
+                                <h1 className='font-bold text-4xl text-white bg-amber-500'>{nameConfirmation} </h1>
+                                <h1 className='font-bold text-4xl'> شكر جزيلا لك </h1>
                             </div>
                             <h2 className='xl:text-4xl lg:text-3xl md:text-xl font-bold pb-4'>على ثقتك بنا وعلى طلبك الكريم</h2>
                             <p className='xl:text-2xl lg:text-xl md:text-xl font-bold'>يسعدنا خدمتك، وسنتصل بك خلال مدة قصيرة لتأكيد تفاصيل الطلب والتأكد من تلبية جميع احتياجاتك.
                                 .نحن دائمًا هنا لخدمتك ونتطلع إلى تقديم أفضل تجربة ممكنة</p>
                         </div>
+                         <div>
+                            <Lottie animationData={animationData} loop={true} className='xl:w-[500px] lg:w-100 xm:w-full sm:w-full md:w-[500px]' />
+                        </div>
                     </div>
 
 
-                    <div className='bg-gray-100/50  border-1  border-black/20 xl:w-1/2 lg:w-1/2 m-auto mt-10 shadow-lg rounded-xl '>
+                    <div className='bg-gray-100/50  border-1   border-black/20 xl:w-1/2 sm:w-[90%] xm:w-[90%] lg:w-1/2 m-auto mt-10 shadow-lg rounded-xl '>
                         <div className='flex justify-between items-center p-3  bg-gradient-to-r from-orange-400 to-orange-500 rounded-t-xl'>
                             <FaCartShopping className='text-2xl text-white' />
                             <h1 className='text-end  font-bold text-white text-xl pb-2'>: تفاصيل الطلب </h1>

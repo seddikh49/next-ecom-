@@ -12,9 +12,9 @@ const HomeProducts = () => {
     return (
         <div className='w-full mt-10 '>
            <TextContent text={"أحدث المنتجات"}/>
-            <div className='grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 xm:grid-cols-1 sm:grid-cols-1 mx-auto  gap-10 mt-10 w-full'>
+            <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 xm:grid-cols-1 sm:grid-cols-1 mx-auto  gap-10 mt-10 w-full'>
                
-        {products.slice(0,5).map((product, index) => (
+        {products.slice(0,4).map((product, index) => (
           <div
             key={index}
             className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-4 max-w-xs mx-auto"
@@ -31,11 +31,11 @@ const HomeProducts = () => {
             </div>
 
             <div className="mt-4 text-center">
-              <h1 className="text-lg font-semibold text-gray-800">{product.name}</h1>
+              <h1 className="text-md font-semibold text-gray-800 whitespace-nowrap">{product.name.slice(0,25)}</h1>
               <p className="text-xl text-indigo-600 font-bold mt-2">{product.price} ريال</p>
 
-              <Link href={`/${product._id}`} className="block">
-                <button className="mt-4 w-full bg-indigo-600 text-white py-2 px-4 rounded-xl hover:bg-indigo-700 transition duration-300">
+              <Link href={`/collection/${product._id}`} className="block">
+                <button className="mt-4 w-full bg-indigo-600 font-bold text-white py-2 px-4 rounded-xl hover:bg-indigo-700 transition duration-300">
                   شراء المنتج
                 </button>
               </Link>
