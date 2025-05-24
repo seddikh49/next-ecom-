@@ -18,7 +18,7 @@ import Link from 'next/link';
 import axios from 'axios';
 
 const ProductDetails = ({ product }) => {
-      const router = useRouter()
+    const router = useRouter()
     const [loading, setLoading] = useState(false);
     const [status, setstatus] = useState('جديد');
     const [notification, setnotification] = useState(1);
@@ -64,26 +64,26 @@ const ProductDetails = ({ product }) => {
                 notification,
                 date: new Date()
             });
-          
+
             if (response.data.success) {
                 toast.success('تم طلب المنتج')
                 setLoading(false)
                 router.push('/confirm   ')
             }
-            if(!response.data.success){
+            if (!response.data.success) {
                 toast.error(response.data.msg)
                 setLoading(false)
             }
-           
+
 
         } catch (error) {
             setLoading(false)
-            if(error.response.data.details.length > 1){
+            if (error.response.data.details.length > 1) {
                 return toast.error('يرجى ملئ جميع الحقول')
             }
             toast.error(error.response.data.details[0].message)
-            
-            
+
+
         }
 
     }
@@ -148,7 +148,126 @@ const ProductDetails = ({ product }) => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className='flex z-1  flex-col xl:w-[550px] md:w-[90%]  p-7 shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.8)] lg:w-[420px] xm:w-[90%] sm:w-[90%]  gap-5 xl:items-end sm:items-center' action="">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-[600px] bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
+                        {/* الاسم ورقم الهاتف */}
+                        <div dir="rtl" className="flex flex-col md:flex-row gap-5">
+                            <div className="relative w-full">
+                                <input
+                                    onChange={(e) => setfullName(e.target.value)}
+                                    value={fullName}
+                                    placeholder="الاسم الكامل"
+                                    type="text"
+                                    className="w-full py-3 pl-10 pr-4 text-sm font-medium bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <MdAccountCircle className="absolute top-1/2 -translate-y-1/2 left-3 text-xl text-gray-500" />
+                            </div>
+                            <div className="relative w-full">
+                                <input
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    value={phone}
+                                    type="text"
+                                    placeholder="رقم الهاتف"
+                                    className="w-full py-3 pl-10 pr-4 text-sm font-medium bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <FaPhone className="absolute top-1/2 -translate-y-1/2 left-3 text-xl text-gray-500" />
+                            </div>
+                        </div>
+
+                        {/* البلدية والولاية */}
+                        <div className="flex flex-col md:flex-row gap-5">
+                            <select
+                                onChange={(e) => setCommune(e.target.value)}
+                                value={commune}
+                                className="w-full py-3 px-4 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="">البلدية</option>
+                                {communess.map((wil, index) => (
+                                    <option key={index} value={wil.num}>
+                                        {wil.commune_name}
+                                    </option>
+                                ))}
+                            </select>
+
+                            <select
+                                onChange={(e) => setWilaya(e.target.value)}
+                                value={wilaya}
+                                className="w-full py-3 px-4 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                <option value="">الولاية</option>
+                                {wilayas.map((wil, index) => (
+                                    <option key={index} value={wil.wil}>
+                                        {wil.wil} - {wil.num}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* كمية المنتج */}
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <h1 className="text-lg font-bold text-gray-700 text-right">:كمية المنتج</h1>
+                            <div className="flex items-center overflow-hidden border border-gray-300 rounded-xl">
+                                <button type="button" onClick={incrementQuantity} className="w-10 h-10 bg-blue-600 text-white font-bold text-xl hover:bg-blue-700 transition">
+                                    +
+                                </button>
+                                <div className="w-10 h-10 flex items-center justify-center font-bold text-lg">{quantity}</div>
+                                <button type="button" onClick={decrementQuantity} className="w-10 h-10 bg-red-600 text-white font-bold text-xl hover:bg-red-700 transition">
+                                    -
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* تفاصيل الطلب */}
+                        <div className="rounded-xl border border-gray-300 bg-gray-50 overflow-hidden">
+                            <div className="flex items-center justify-between bg-gradient-to-l from-orange-500 to-yellow-400 p-4">
+                                <FaCartShopping className="text-white text-2xl" />
+                                <h1 className="text-white font-bold text-lg">: تفاصيل الطلب</h1>
+                            </div>
+                            <div className="p-4 space-y-4 text-sm text-gray-700">
+                                <div className="text-end">
+                                    <h2 className="font-bold">: المنتج</h2>
+                                    <p>{product.name}</p>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex gap-1 font-bold">
+                                        <span>{quantity}</span>
+                                        <span>ق</span>
+                                    </div>
+                                    <span className="font-bold">: الكمية</span>
+                                </div>
+                                <div className="flex justify-between font-bold">
+                                    <span>
+                                        {deliveryPrice} {currency}
+                                    </span>
+                                    <span>: سعر التوصيل</span>
+                                </div>
+                                <div className="flex justify-between border-t pt-3 font-bold text-lg">
+                                    <span>
+                                        {totalPrice} {currency}
+                                    </span>
+                                    <span>: السعر الاجمالي</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* زر الطلب عبر واتساب */}
+                        <Link
+                            href="whatsapp"
+                            className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 transition text-white font-bold text-center flex items-center justify-center gap-3"
+                        >
+                            <FaWhatsapp className="text-2xl" />
+                            اضغط هنا للطلب عبر الواتساب
+                        </Link>
+
+                        {/* زر تأكيد الطلب */}
+                        <button
+                            type="submit"
+                            className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-bold text-center flex items-center justify-center gap-3"
+                        >
+                            {loading ? <ClipLoader color="#fff" size={24} /> : "اضغط هنا لتأكيد الطلب"}
+                        </button>
+                    </form>
+
+                    {/* <form onSubmit={handleSubmit} className='flex z-1  flex-col xl:w-[550px] md:w-[90%]  p-7 shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.8)] lg:w-[420px] xm:w-[90%] sm:w-[90%]  gap-5 xl:items-end sm:items-center' action="">
                         <div dir='rtl' className='xl:w-full md:w-full lg:w-full  sm:w-full flex gap-5 xl:flex-row md:flex-row lg:flex-row  sm:flex-col xm:flex-col '>
                             <div className='xl:w-1/2 relative sm:w-full xm:w-full'>
                                 <input onChange={(e) => setfullName(e.target.value)} value={fullName} className='w-1/2 bg-gray-100 py-3 font-bold px-10 border-1 sm:w-full xm:w-full focus:outline-blue-500 border-gray-600/50 rounded-[5px]' placeholder='الاسم الكامل' type="text" />
@@ -238,7 +357,7 @@ const ProductDetails = ({ product }) => {
                         </div>
 
 
-                    </form>
+                    </form> */}
                 </div>
 
 
