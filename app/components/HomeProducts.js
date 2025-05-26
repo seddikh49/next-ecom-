@@ -4,18 +4,23 @@ import { useShop } from "../context/shopContext";
 import Image from 'next/image';
 import Link from 'next/link';
 import TextContent from '../components/TextContent';
+import { motion } from "framer-motion";
+
 
 
 const HomeProducts = () => {
-    const { products } = useShop();
+  const { products } = useShop();
 
-    return (
-        <div className='w-full mt-10 '>
-           <TextContent text={"أحدث المنتجات"}/>
-            <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 xm:grid-cols-1 sm:grid-cols-1 mx-auto  gap-5 mt-10 w-full'>
-               
-        {products.slice(0,4).map((product, index) => (
-          <div
+  return (
+    <div className='w-full mt-10 '>
+      <TextContent text={"أحدث المنتجات"} />
+      <div className='grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 xm:grid-cols-1 sm:grid-cols-1 mx-auto  gap-10 mt-10 w-full'>
+
+        {products.slice(0,5).map((product, index) => (
+          <motion.div
+           initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
             key={index}
             className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-4 w-full  mx-auto"
           >
@@ -31,7 +36,7 @@ const HomeProducts = () => {
             </div>
 
             <div className="mt-4 text-center">
-              <h1 className="text-md font-semibold text-gray-800 whitespace-nowrap">{product.name.slice(0,25)}</h1>
+              <h1 className="text-md font-semibold text-gray-800 whitespace-nowrap">{product.name.slice(0, 25)}</h1>
               <p className="text-xl text-indigo-600 font-bold mt-2">{product.price} ريال</p>
 
               <Link href={`/collection/${product._id}`} className="block">
@@ -40,11 +45,11 @@ const HomeProducts = () => {
                 </button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
-            </div>
-        </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 export default HomeProducts

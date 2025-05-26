@@ -9,6 +9,8 @@ import { wilayas } from '../../public/‏‏assets/frontend_assets/wilayas'
 import { ClipLoader } from "react-spinners";
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
+import { motion } from "framer-motion";
+
 
 
 
@@ -148,8 +150,12 @@ const ProductDetails = ({ product }) => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-[600px] bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
+                    <motion.form
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }} onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-[600px] bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
                         {/* الاسم ورقم الهاتف */}
+
                         <div dir="rtl" className="flex flex-col md:flex-row gap-5">
                             <div className="relative w-full">
                                 <input
@@ -204,7 +210,7 @@ const ProductDetails = ({ product }) => {
 
                         {/* كمية المنتج */}
                         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                            <h1 className="text-lg font-bold text-gray-700 text-right">:كمية المنتج</h1>
+                        
                             <div className="flex items-center overflow-hidden border border-gray-300 rounded-xl">
                                 <button type="button" onClick={incrementQuantity} className="w-10 h-10 bg-blue-600 text-white font-bold text-xl hover:bg-blue-700 transition">
                                     +
@@ -214,6 +220,7 @@ const ProductDetails = ({ product }) => {
                                     -
                                 </button>
                             </div>
+                                <h1 className="text-lg font-bold text-gray-700 text-right">:    كمية المنتج</h1>
                         </div>
 
                         {/* تفاصيل الطلب */}
@@ -265,7 +272,7 @@ const ProductDetails = ({ product }) => {
                         >
                             {loading ? <ClipLoader color="#fff" size={24} /> : "اضغط هنا لتأكيد الطلب"}
                         </button>
-                    </form>
+                    </motion.form>
 
                     {/* <form onSubmit={handleSubmit} className='flex z-1  flex-col xl:w-[550px] md:w-[90%]  p-7 shadow-[0px_0px_5px_0px_rgba(0,_0,_0,_0.8)] lg:w-[420px] xm:w-[90%] sm:w-[90%]  gap-5 xl:items-end sm:items-center' action="">
                         <div dir='rtl' className='xl:w-full md:w-full lg:w-full  sm:w-full flex gap-5 xl:flex-row md:flex-row lg:flex-row  sm:flex-col xm:flex-col '>
@@ -368,7 +375,9 @@ const ProductDetails = ({ product }) => {
 
 
 
-                <div className='xl:w-1/2 lg:w-1/2 md:w-full flex flex-col gap-2 justify-center md:items-center sm:items-center xm:items-center xl:items-start '>
+                <motion.div initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }} className='xl:w-1/2 lg:w-1/2 md:w-full flex flex-col gap-2 justify-center md:items-center sm:items-center xm:items-center xl:items-start '>
                     <img src={product.image[imageIndex]} alt="" className='xl:w-[500px] lg:w-[400px] md:w-4/5 sm:w-[90%] xm:w-[90%]' />
                     <div className='grid grid-cols-4 xl:w-[500px] lg:w-[400px] md:w-4/5 gap-2 sm:w-[90%] xm:w-[90%]'>
                         {product.image.map((img, index) => {
@@ -378,7 +387,7 @@ const ProductDetails = ({ product }) => {
                         })}
 
                     </div>
-                </div>
+                </motion.div>
             </div>
 
         </div>
